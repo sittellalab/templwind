@@ -23,6 +23,7 @@ type DateInputProps struct {
 // DateInput renders a date input form control.
 // NOTE: If using the Validator, JavaScript will be required.
 // In addition, the Validator requires an element ID, and a Min and/or Max value.
+// The Validator does not disable or prevent form submission if the input is invalid.
 templ DateInput(props DateInputProps) {
 	if props.Label != "" {
 		<label
@@ -37,11 +38,14 @@ templ DateInput(props DateInputProps) {
 					"order-first",
 					twlib.IIF(
 						props.LabelResponsive,
-						"absolute -top-2.5 left-3 text-sm text-shadow shadow-neutral-50 dark:shadow-neutral-950",
+						"absolute -top-2.5 left-3 text-sm font-semibold text-shadow shadow-neutral-50 "+
+							"dark:shadow-neutral-950",
 						"",
 					),
 				}
-			>{ props.Label }</span>
+			>
+				{ props.Label }
+			</span>
 		</label>
 	} else {
 		@dateInput(props)

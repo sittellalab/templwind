@@ -1,6 +1,7 @@
 package internal
 
 import "github.com/sittellalab/templwind/pkg/twui"
+import "time"
 
 templ Index() {
 	<!DOCTYPE html>
@@ -15,12 +16,12 @@ templ Index() {
 		<body class="bg-neutral-50 text-neutral-950 dark:bg-neutral-950 dark:text-neutral-50">
 			@twui.ThemeToggle(twui.ThemeToggleProps{})
 			<br/>
-			@twui.ColorInput(twui.ColorInputProps{})
-			@twui.ColorInput(twui.ColorInputProps{Disabled: true})
-			@twui.ColorInput(twui.ColorInputProps{Label: "label"})
-			@twui.ColorInput(twui.ColorInputProps{Label: "label", Disabled: true})
-			@twui.ColorInput(twui.ColorInputProps{Label: "label", LabelResponsive: true})
-			@twui.ColorInput(twui.ColorInputProps{Label: "label", LabelResponsive: true, Disabled: true})
+			@twui.DateInput(twui.DateInputProps{ID: "d1", Validator: true, Min: time.Now(), Max: time.Now().Add(time.Hour * 200)})
+			@twui.DateInput(twui.DateInputProps{Disabled: true, Valid: true})
+			@twui.DateInput(twui.DateInputProps{ID: "d2", Validator: true, Label: "label", Max: time.Now().Add(time.Hour * 200)})
+			@twui.DateInput(twui.DateInputProps{Label: "label", Disabled: true, Invalid: true})
+			@twui.DateInput(twui.DateInputProps{ID: "d3", Validator: true, Label: "label", LabelResponsive: true, Min: time.Now()})
+			@twui.DateInput(twui.DateInputProps{Label: "label", LabelResponsive: true, Disabled: true})
 		</body>
 	</html>
 }

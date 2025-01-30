@@ -82,7 +82,7 @@ func main() {
 - [X] [Button](/pkg/twui/button.templ)
 - [X] [Checkbox](/pkg/twui/checkbox.templ)
 - [X] [Color Input](/pkg/twui/color_input.templ)
-- [ ] Date Input
+- [X] [Date Input](/pkg/twui/date_input.templ)
 - [ ] Datetime Input
 - [ ] Email Input
 - [ ] File Input

@@ -55,7 +55,7 @@ func main() {
 ### Actions
 - [ ] Dialog
 - [ ] Modal
-- [ ] Theme Toggle
+- [X] [Theme Toggle](/pkg/twui/theme_toggle.templ)
 
 ### Containers (Active)
 - [ ] Accordion
@@ -76,7 +76,7 @@ func main() {
 
 ### Content
 - [X] [Lucide Icons](/pkg/twicons)
-- [ ] Spinner
+- [X] [Spinner](/pkg/twui/spinner.templ)
 
 ### Form Controls
 - [ ] Button

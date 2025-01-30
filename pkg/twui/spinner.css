@@ -1,0 +1,106 @@
+.htmx-indicator {
+  display: none;
+}
+
+.htmx-request.htmx-indicator,
+.htmx-request .htmx-indicator {
+  display: inline-block;
+}
+
+@keyframes flash {
+  0% {
+    background-color: color-mix(in oklch, currentcolor 20%, transparent);
+    box-shadow:
+      2em 0 color-mix(in oklch, currentcolor 20%, transparent),
+      -2em 0 currentcolor;
+  }
+  50% {
+    background-color: currentcolor;
+    box-shadow:
+      2em 0 color-mix(in oklch, currentcolor 20%, transparent),
+      -2em 0 color-mix(in oklch, currentcolor 20%, transparent);
+  }
+  100% {
+    background-color: color-mix(in oklch, currentcolor 20%, transparent);
+    box-shadow:
+      2em 0 currentcolor,
+      -2em 0 color-mix(in oklch, currentcolor 20%, transparent);
+  }
+}
+
+@keyframes jump-outer-odd {
+  0%,33%,100% {
+    transform: scaleY(0) translateX(-3em);
+  }
+  16% {
+    transform: scaleY(1) translateX(-3em);
+  }
+  34%, 66% {
+    transform: scaleY(0) translateX(0);
+  }
+  50% {
+    transform: scaleY(1) translateX(0);
+  }
+  67%,99% {
+    transform: scaleY(0) translateX(3em);
+  }
+  83% {
+    transform: scaleY(1) translateX(3em);
+  }
+}
+
+@keyframes jump-outer-even {
+  0%,16%,50%,100% {
+    transform: scaleY(0) translateX(-1.5em);
+  }
+  33% {
+    transform: scaleY(1) translateX(-1.5em);
+  }
+  51%,83% {
+    transform: scaleY(0) translateX(1.5em);
+  }
+  66% {
+    transform: scaleY(1) translate(1.5em);
+  }
+}
+
+@keyframes rainbow-outer-odd {
+  0%,33%,100% {
+    background-color: var(--color-rose-700);
+    transform: scaleY(0) translateX(-3em);
+  }
+  16% {
+    transform: scaleY(1) translateX(-3em);
+  }
+  34%, 66% {
+    background-color: var(--color-green-700);
+    transform: scaleY(0) translateX(0);
+  }
+  50% {
+    transform: scaleY(1) translateX(0);
+  }
+  67%,99% {
+    background-color: var(--color-purple-700);
+    transform: scaleY(0) translateX(3em);
+  }
+  83% {
+    transform: scaleY(1) translateX(3em);
+  }
+}
+
+@keyframes rainbow-outer-even {
+  0%,16%,50%,100% {
+    background-color: var(--color-yellow-500);
+    transform: scaleY(0) translateX(-1.5em);
+  }
+  33% {
+    transform: scaleY(1) translateX(-1.5em);
+  }
+  51%,83% {
+    background-color: var(--color-cyan-500);
+    transform: scaleY(0) translateX(1.5em);
+  }
+  66% {
+    transform: scaleY(1) translate(1.5em);
+  }
+}

@@ -75,7 +75,7 @@ func main() {
 - [ ] Table
 
 ### Content
-- [ ] Lucide Icons
+- [X] [Lucide Icons](/pkg/twicons)
 - [ ] Spinner
 
 ### Form Controls

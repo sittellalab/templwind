@@ -1,5 +1,7 @@
 package internal
 
+import "github.com/sittellalab/templwind/pkg/twui"
+
 templ Index() {
 	<!DOCTYPE html>
 	<html lang="en">
@@ -8,7 +10,10 @@ templ Index() {
 			<meta name="viewport" content="width=device-width, initial-scale=1"/>
 			<link rel="stylesheet" href="/output.css"/>
 			<title>Templwind Development</title>
+			@twui.DetectTheme()
 		</head>
-		<body class="bg-neutral-50 text-neutral-950 dark:bg-neutral-950 dark:text-neutral-50"></body>
+		<body class="bg-neutral-50 text-neutral-950 dark:bg-neutral-950 dark:text-neutral-50">
+			@twui.ThemeToggle(twui.ThemeToggleProps{})
+		</body>
 	</html>
 }

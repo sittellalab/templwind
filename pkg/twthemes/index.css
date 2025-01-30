@@ -1,0 +1,2 @@
+@import "../twui/_index.css";
+@variant dark (&:where(.dark, .dark *));

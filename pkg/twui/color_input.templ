@@ -1,0 +1,68 @@
+package twui
+
+import "github.com/Oudwins/tailwind-merge-go/pkg/twmerge"
+import "github.com/sittellalab/templwind/pkg/twlib"
+
+type ColorInputProps struct {
+	Class            string // Additional classes for the <input>, conflicting tailwind classes are overwritten.
+	Disabled         bool   // Disables the color input.
+	Label            string // Wraps the color input in a label.
+	LabelResponsive  bool   // Applies responsive styling to the label.
+	Name             string // Specifies the color input name attribute.
+	ID               string // Specifies the color input id attribute.
+	Value            string // Specifies the color input value attribute.
+	templ.Attributes        // Additional attributes.
+}
+
+// ColorInput renders a clickable color input form control.
+templ ColorInput(props ColorInputProps) {
+	if props.Label != "" {
+		<label
+			class={
+				"relative grid has-disabled:opacity-50",
+				twlib.IIF(props.LabelResponsive, "mt-3", ""),
+			}
+		>
+			@colorInput(props)
+			<span
+				class={
+					"order-first",
+					twlib.IIF(
+						props.LabelResponsive,
+						"absolute -top-2.5 left-2 text-sm text-shadow shadow-neutral-50 dark:shadow-neutral-950",
+						"",
+					),
+				}
+			>
+				{ props.Label }
+			</span>
+		</label>
+	} else {
+		@colorInput(props)
+	}
+}
+
+templ colorInput(props ColorInputProps) {
+	<input
+		type="color"
+		if props.ID != "" {
+			id={ props.ID }
+		}
+		class={
+			twmerge.Merge(
+				"bg-transparent border border-neutral-950 dark:border-neutral-50 rounded enabled:cursor-pointer",
+				"disabled:cursor-not-allowed h-9 w-full py-0.5",
+				twlib.IIF(props.Label == "", "disabled:opacity-50", ""),
+				props.Class,
+			),
+		}
+		if props.Name != "" {
+			name={ props.Name }
+		}
+		if props.Value != "" {
+			value={ props.Value }
+		}
+		disabled?={ props.Disabled }
+		{ props.Attributes... }
+	/>
+}

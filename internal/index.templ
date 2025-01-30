@@ -15,29 +15,12 @@ templ Index() {
 		<body class="bg-neutral-50 text-neutral-950 dark:bg-neutral-950 dark:text-neutral-50">
 			@twui.ThemeToggle(twui.ThemeToggleProps{})
 			<br/>
-			@twui.Checkbox(twui.CheckboxProps{})
-			@twui.Checkbox(twui.CheckboxProps{Style: twui.GreenCheckbox})
-			@twui.Checkbox(twui.CheckboxProps{Style: twui.RedCheckbox})
-			@twui.Checkbox(twui.CheckboxProps{Style: twui.TealCheckbox})
-			@twui.Checkbox(twui.CheckboxProps{Style: twui.YellowCheckbox})
-			<br/>
-			@twui.Checkbox(twui.CheckboxProps{Disabled: true})
-			@twui.Checkbox(twui.CheckboxProps{Style: twui.GreenCheckbox, Disabled: true})
-			@twui.Checkbox(twui.CheckboxProps{Style: twui.RedCheckbox, Disabled: true})
-			@twui.Checkbox(twui.CheckboxProps{Style: twui.TealCheckbox, Disabled: true})
-			@twui.Checkbox(twui.CheckboxProps{Style: twui.YellowCheckbox, Disabled: true})
-			<br/>
-			@twui.Checkbox(twui.CheckboxProps{Checked: true})
-			@twui.Checkbox(twui.CheckboxProps{Style: twui.GreenCheckbox, Checked: true})
-			@twui.Checkbox(twui.CheckboxProps{Style: twui.RedCheckbox, Checked: true})
-			@twui.Checkbox(twui.CheckboxProps{Style: twui.TealCheckbox, Checked: true})
-			@twui.Checkbox(twui.CheckboxProps{Style: twui.YellowCheckbox, Checked: true})
-			<br/>
-			@twui.Checkbox(twui.CheckboxProps{Disabled: true, Checked: true})
-			@twui.Checkbox(twui.CheckboxProps{Style: twui.GreenCheckbox, Disabled: true, Checked: true})
-			@twui.Checkbox(twui.CheckboxProps{Style: twui.RedCheckbox, Disabled: true, Checked: true})
-			@twui.Checkbox(twui.CheckboxProps{Style: twui.TealCheckbox, Disabled: true, Checked: true})
-			@twui.Checkbox(twui.CheckboxProps{Style: twui.YellowCheckbox, Disabled: true, Checked: true})
+			@twui.ColorInput(twui.ColorInputProps{})
+			@twui.ColorInput(twui.ColorInputProps{Disabled: true})
+			@twui.ColorInput(twui.ColorInputProps{Label: "label"})
+			@twui.ColorInput(twui.ColorInputProps{Label: "label", Disabled: true})
+			@twui.ColorInput(twui.ColorInputProps{Label: "label", LabelResponsive: true})
+			@twui.ColorInput(twui.ColorInputProps{Label: "label", LabelResponsive: true, Disabled: true})
 		</body>
 	</html>
 }

@@ -81,7 +81,7 @@ func main() {
 ### Form Controls
 - [X] [Button](/pkg/twui/button.templ)
 - [X] [Checkbox](/pkg/twui/checkbox.templ)
-- [ ] Color Input
+- [X] [Color Input](/pkg/twui/color_input.templ)
 - [ ] Date Input
 - [ ] Datetime Input
 - [ ] Email Input

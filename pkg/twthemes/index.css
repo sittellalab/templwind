@@ -1,2 +1,13 @@
 @import "../twui/_index.css";
 @variant dark (&:where(.dark, .dark *));
+
+@utility text-shadow {
+  text-shadow:
+    0 1px 2px var(--tw-shadow-color),
+    0 -1px 2px var(--tw-shadow-color),
+    1px 0 2px var(--tw-shadow-color),
+    -1px 0 2px var(--tw-shadow-color),
+    1px 1px 2px var(--tw-shadow-color),
+    1px -1px 2px var(--tw-shadow-color),
+    -1px 1px 2px var(--tw-shadow-color);
+}

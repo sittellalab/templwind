@@ -51,99 +51,31 @@ func Index() templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = twui.Checkbox(twui.CheckboxProps{}).Render(ctx, templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = twui.ColorInput(twui.ColorInputProps{}).Render(ctx, templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = twui.Checkbox(twui.CheckboxProps{Style: twui.GreenCheckbox}).Render(ctx, templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = twui.ColorInput(twui.ColorInputProps{Disabled: true}).Render(ctx, templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = twui.Checkbox(twui.CheckboxProps{Style: twui.RedCheckbox}).Render(ctx, templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = twui.ColorInput(twui.ColorInputProps{Label: "label"}).Render(ctx, templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = twui.Checkbox(twui.CheckboxProps{Style: twui.TealCheckbox}).Render(ctx, templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = twui.ColorInput(twui.ColorInputProps{Label: "label", Disabled: true}).Render(ctx, templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = twui.Checkbox(twui.CheckboxProps{Style: twui.YellowCheckbox}).Render(ctx, templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = twui.ColorInput(twui.ColorInputProps{Label: "label", LabelResponsive: true}).Render(ctx, templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 4, "<br>")
+		templ_7745c5c3_Err = twui.ColorInput(twui.ColorInputProps{Label: "label", LabelResponsive: true, Disabled: true}).Render(ctx, templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = twui.Checkbox(twui.CheckboxProps{Disabled: true}).Render(ctx, templ_7745c5c3_Buffer)
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		templ_7745c5c3_Err = twui.Checkbox(twui.CheckboxProps{Style: twui.GreenCheckbox, Disabled: true}).Render(ctx, templ_7745c5c3_Buffer)
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		templ_7745c5c3_Err = twui.Checkbox(twui.CheckboxProps{Style: twui.RedCheckbox, Disabled: true}).Render(ctx, templ_7745c5c3_Buffer)
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		templ_7745c5c3_Err = twui.Checkbox(twui.CheckboxProps{Style: twui.TealCheckbox, Disabled: true}).Render(ctx, templ_7745c5c3_Buffer)
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		templ_7745c5c3_Err = twui.Checkbox(twui.CheckboxProps{Style: twui.YellowCheckbox, Disabled: true}).Render(ctx, templ_7745c5c3_Buffer)
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 5, "<br>")
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		templ_7745c5c3_Err = twui.Checkbox(twui.CheckboxProps{Checked: true}).Render(ctx, templ_7745c5c3_Buffer)
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		templ_7745c5c3_Err = twui.Checkbox(twui.CheckboxProps{Style: twui.GreenCheckbox, Checked: true}).Render(ctx, templ_7745c5c3_Buffer)
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		templ_7745c5c3_Err = twui.Checkbox(twui.CheckboxProps{Style: twui.RedCheckbox, Checked: true}).Render(ctx, templ_7745c5c3_Buffer)
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		templ_7745c5c3_Err = twui.Checkbox(twui.CheckboxProps{Style: twui.TealCheckbox, Checked: true}).Render(ctx, templ_7745c5c3_Buffer)
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		templ_7745c5c3_Err = twui.Checkbox(twui.CheckboxProps{Style: twui.YellowCheckbox, Checked: true}).Render(ctx, templ_7745c5c3_Buffer)
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 6, "<br>")
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		templ_7745c5c3_Err = twui.Checkbox(twui.CheckboxProps{Disabled: true, Checked: true}).Render(ctx, templ_7745c5c3_Buffer)
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		templ_7745c5c3_Err = twui.Checkbox(twui.CheckboxProps{Style: twui.GreenCheckbox, Disabled: true, Checked: true}).Render(ctx, templ_7745c5c3_Buffer)
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		templ_7745c5c3_Err = twui.Checkbox(twui.CheckboxProps{Style: twui.RedCheckbox, Disabled: true, Checked: true}).Render(ctx, templ_7745c5c3_Buffer)
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		templ_7745c5c3_Err = twui.Checkbox(twui.CheckboxProps{Style: twui.TealCheckbox, Disabled: true, Checked: true}).Render(ctx, templ_7745c5c3_Buffer)
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		templ_7745c5c3_Err = twui.Checkbox(twui.CheckboxProps{Style: twui.YellowCheckbox, Disabled: true, Checked: true}).Render(ctx, templ_7745c5c3_Buffer)
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 7, "</body></html>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 4, "</body></html>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

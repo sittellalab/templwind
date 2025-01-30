@@ -159,8 +159,8 @@ func dateInput(props DateInputProps) templ.Component {
 		ctx = templ.ClearChildren(ctx)
 		var templ_7745c5c3_Var8 = []any{
 			twmerge.Merge(
-				"peer bg-neutral-950/5 dark:bg-neutral-50/5 enabled:focus:bg-transparent border-neutral-950",
-				"dark:border-neutral-50 text-current h-9 w-full px-2 disabled:cursor-not-allowed",
+				"peer bg-neutral-950/5 dark:bg-neutral-50/5 enabled:focus:bg-transparent border border-neutral-950",
+				"dark:border-neutral-50 rounded text-current h-9 w-full px-2 disabled:cursor-not-allowed",
 				"[&[aria-invalid]]:border-2 [&[aria-invalid=true]]:border-red-700",
 				"[&[aria-invalid=false]]:border-green-700",
 				twlib.IIF(props.Label == "", "disabled:opacity-50", ""),

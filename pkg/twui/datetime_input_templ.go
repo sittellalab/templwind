@@ -359,7 +359,7 @@ func datetimeInputValidator(id string) templ.Component {
 		var templ_7745c5c3_Var17 string
 		templ_7745c5c3_Var17, templ_7745c5c3_Err = templ.JoinStringErrs(id)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `pkg/twui/datetime_input.templ`, Line: 94, Col: 17}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `pkg/twui/datetime_input.templ`, Line: 95, Col: 10}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var17))
 		if templ_7745c5c3_Err != nil {
@@ -377,7 +377,7 @@ func datetimeInputValidator(id string) templ.Component {
 			var templ_7745c5c3_Var18 string
 			templ_7745c5c3_Var18, templ_7745c5c3_Err = templ.JoinStringErrs(nonce)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `pkg/twui/datetime_input.templ`, Line: 95, Col: 14}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `pkg/twui/datetime_input.templ`, Line: 97, Col: 16}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var18))
 			if templ_7745c5c3_Err != nil {

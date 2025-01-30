@@ -91,9 +91,12 @@ templ datetimeInput(props DatetimeInputProps) {
 
 templ datetimeInputValidator(id string) {
 	{{ nonce := templ.GetNonce(ctx) }}
-	<script for={ id } if nonce != "" {
-	nonce={ nonce }
-}>
+	<script
+		for={ id }
+		if nonce != "" {
+			nonce={ nonce }
+		}
+	>
 		function validateDatetimeInput() {
 			if (this.value.length > 0) {
 				let valid;

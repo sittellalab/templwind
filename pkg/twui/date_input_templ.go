@@ -86,7 +86,7 @@ func DateInput(props DateInputProps) templ.Component {
 				"order-first",
 				twlib.IIF(
 					props.LabelResponsive,
-					"absolute -top-2 left-3 text-sm text-shadow shadow-neutral-50 dark:shadow-neutral-950",
+					"absolute -top-2.5 left-3 text-sm text-shadow shadow-neutral-50 dark:shadow-neutral-950",
 					"",
 				),
 			}
@@ -159,7 +159,8 @@ func dateInput(props DateInputProps) templ.Component {
 			twmerge.Merge(
 				"peer bg-neutral-950/5 dark:bg-neutral-50/5 enabled:focus:bg-transparent border-neutral-950",
 				"dark:border-neutral-50 text-current h-9 w-full px-2 disabled:cursor-not-allowed",
-				"[&[aria-invalid=true]]:border-red-700 [&[aria-invalid=false]]:border-green-700",
+				"[&[aria-invalid]]:border-2 [&[aria-invalid=true]]:border-red-700",
+				"[&[aria-invalid=false]]:border-green-700",
 				twlib.IIF(props.Label == "", "disabled:opacity-50", ""),
 				props.Class,
 			),
@@ -216,7 +217,7 @@ func dateInput(props DateInputProps) templ.Component {
 			var templ_7745c5c3_Var11 string
 			templ_7745c5c3_Var11, templ_7745c5c3_Err = templ.JoinStringErrs(props.Name)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `pkg/twui/date_input.templ`, Line: 67, Col: 20}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `pkg/twui/date_input.templ`, Line: 68, Col: 20}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var11))
 			if templ_7745c5c3_Err != nil {
@@ -235,7 +236,7 @@ func dateInput(props DateInputProps) templ.Component {
 			var templ_7745c5c3_Var12 string
 			templ_7745c5c3_Var12, templ_7745c5c3_Err = templ.JoinStringErrs(props.Value.Format(time.DateOnly))
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `pkg/twui/date_input.templ`, Line: 70, Col: 44}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `pkg/twui/date_input.templ`, Line: 71, Col: 44}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var12))
 			if templ_7745c5c3_Err != nil {
@@ -254,7 +255,7 @@ func dateInput(props DateInputProps) templ.Component {
 			var templ_7745c5c3_Var13 string
 			templ_7745c5c3_Var13, templ_7745c5c3_Err = templ.JoinStringErrs(props.Min.Format(time.DateOnly))
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `pkg/twui/date_input.templ`, Line: 73, Col: 40}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `pkg/twui/date_input.templ`, Line: 74, Col: 40}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var13))
 			if templ_7745c5c3_Err != nil {
@@ -273,7 +274,7 @@ func dateInput(props DateInputProps) templ.Component {
 			var templ_7745c5c3_Var14 string
 			templ_7745c5c3_Var14, templ_7745c5c3_Err = templ.JoinStringErrs(props.Max.Format(time.DateOnly))
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `pkg/twui/date_input.templ`, Line: 76, Col: 40}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `pkg/twui/date_input.templ`, Line: 77, Col: 40}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var14))
 			if templ_7745c5c3_Err != nil {
@@ -292,7 +293,7 @@ func dateInput(props DateInputProps) templ.Component {
 			var templ_7745c5c3_Var15 string
 			templ_7745c5c3_Var15, templ_7745c5c3_Err = templ.JoinStringErrs(twlib.IIF(props.Invalid, "true", "false"))
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `pkg/twui/date_input.templ`, Line: 79, Col: 59}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `pkg/twui/date_input.templ`, Line: 80, Col: 59}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var15))
 			if templ_7745c5c3_Err != nil {
@@ -356,7 +357,7 @@ func dateInputValidator(id string) templ.Component {
 		var templ_7745c5c3_Var17 string
 		templ_7745c5c3_Var17, templ_7745c5c3_Err = templ.JoinStringErrs(id)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `pkg/twui/date_input.templ`, Line: 92, Col: 10}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `pkg/twui/date_input.templ`, Line: 93, Col: 10}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var17))
 		if templ_7745c5c3_Err != nil {
@@ -374,7 +375,7 @@ func dateInputValidator(id string) templ.Component {
 			var templ_7745c5c3_Var18 string
 			templ_7745c5c3_Var18, templ_7745c5c3_Err = templ.JoinStringErrs(nonce)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `pkg/twui/date_input.templ`, Line: 94, Col: 16}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `pkg/twui/date_input.templ`, Line: 95, Col: 16}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var18))
 			if templ_7745c5c3_Err != nil {
@@ -385,7 +386,7 @@ func dateInputValidator(id string) templ.Component {
 				return templ_7745c5c3_Err
 			}
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 27, ">\n\t\tfunction validateDateInput() {\n\t\t\tif (this.value.length > 0) {\n\t\t\t\tlet valid;\n\t\t\t\tconsole.log(this)\n\t\t\t\tif (this.min && !this.max) {\n\t\t\t\t\tvalid = this.value >= this.min;\n\t\t\t\t}\n\t\t\t\telse if (this.min && this.max) {\n\t\t\t\t\tvalid = this.value >= this.min && this.value <= this.max;\n\t\t\t\t}\n\t\t\t\telse {\n\t\t\t\t\tvalid = this.value <= this.max;\n\t\t\t\t}\n\t\t\t\tthis.setAttribute(\"aria-invalid\", !valid);\n\t\t\t} else {\n\t\t\t\tthis.removeAttribute(\"aria-invalid\");\n\t\t\t}\n\t\t}\n\t\tvalidateDateInput.call(document.getElementById(document.currentScript.getAttribute(\"for\")));\n\t\tdocument.getElementById(document.currentScript.getAttribute(\"for\"))\n\t\t\t.addEventListener(\"blur\", validateDateInput);\n\t\tdocument.getElementById(document.currentScript.getAttribute(\"for\"))\n\t\t\t.addEventListener(\"focus\", function(e) {\n\t\t\t\tthis.removeAttribute(\"aria-invalid\");\n\t\t})\n\t</script>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 27, ">\n\t\tfunction validateDateInput() {\n\t\t\tif (this.value.length > 0) {\n\t\t\t\tlet valid;\n\t\t\t\tif (this.min && !this.max) {\n\t\t\t\t\tvalid = this.value >= this.min;\n\t\t\t\t}\n\t\t\t\telse if (this.min && this.max) {\n\t\t\t\t\tvalid = this.value >= this.min && this.value <= this.max;\n\t\t\t\t}\n\t\t\t\telse {\n\t\t\t\t\tvalid = this.value <= this.max;\n\t\t\t\t}\n\t\t\t\tthis.setAttribute(\"aria-invalid\", !valid);\n\t\t\t} else {\n\t\t\t\tthis.removeAttribute(\"aria-invalid\");\n\t\t\t}\n\t\t}\n\t\tvalidateDateInput.call(document.getElementById(document.currentScript.getAttribute(\"for\")));\n\t\tdocument.getElementById(document.currentScript.getAttribute(\"for\"))\n\t\t\t.addEventListener(\"blur\", validateDateInput);\n\t\tdocument.getElementById(document.currentScript.getAttribute(\"for\"))\n\t\t\t.addEventListener(\"focus\", function(e) {\n\t\t\t\tthis.removeAttribute(\"aria-invalid\");\n\t\t})\n\t</script>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

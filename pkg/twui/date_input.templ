@@ -37,7 +37,7 @@ templ DateInput(props DateInputProps) {
 					"order-first",
 					twlib.IIF(
 						props.LabelResponsive,
-						"absolute -top-2 left-3 text-sm text-shadow shadow-neutral-50 dark:shadow-neutral-950",
+						"absolute -top-2.5 left-3 text-sm text-shadow shadow-neutral-50 dark:shadow-neutral-950",
 						"",
 					),
 				}
@@ -58,7 +58,8 @@ templ dateInput(props DateInputProps) {
 			twmerge.Merge(
 				"peer bg-neutral-950/5 dark:bg-neutral-50/5 enabled:focus:bg-transparent border-neutral-950",
 				"dark:border-neutral-50 text-current h-9 w-full px-2 disabled:cursor-not-allowed",
-				"[&[aria-invalid=true]]:border-red-700 [&[aria-invalid=false]]:border-green-700",
+				"[&[aria-invalid]]:border-2 [&[aria-invalid=true]]:border-red-700",
+				"[&[aria-invalid=false]]:border-green-700",
 				twlib.IIF(props.Label == "", "disabled:opacity-50", ""),
 				props.Class,
 			),
@@ -97,7 +98,6 @@ templ dateInputValidator(id string) {
 		function validateDateInput() {
 			if (this.value.length > 0) {
 				let valid;
-				console.log(this)
 				if (this.min && !this.max) {
 					valid = this.value >= this.min;
 				}

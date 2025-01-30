@@ -1,0 +1,125 @@
+package twui
+
+import "github.com/Oudwins/tailwind-merge-go/pkg/twmerge"
+import "github.com/sittellalab/templwind/pkg/twlib"
+import "github.com/sittellalab/templwind/pkg/twicons"
+
+type EmailInputProps struct {
+	Class            string // Additional classes for the <input>, conflicting tailwind classes are overwritten.
+	Disabled         bool   // Disables the email input.
+	ID               string // Specifies the email input id attribute.
+	Invalid          bool   // Sets the aria-invalid attribute to true and applies invalid styling.
+	Label            string // Wraps the email input in a label.
+	LabelResponsive  bool   // Applies responsive styling to the label.
+	Name             string // Specifies the email input name attribute.
+	Placeholder      string // Specifies the email input placeholder attribute.
+	Valid            bool   // Sets the aria-invalid attribute to false and applies valid styling.
+	Validator        bool   // Adds a validator function to validate the value of the email input fits an email pattern.
+	Value            string // Specifies the email input value attribute.
+	templ.Attributes        // Additional attributes.
+}
+
+// EmailInput renders an email input form control.
+// NOTE: If using the Validator, JavaScript will be required.
+// In addition, the Validator requires an element ID.
+// The Validator does not disable or prevent form submission if the input is invalid.
+templ EmailInput(props EmailInputProps) {
+	if props.Label != "" {
+		<label
+			class={
+				"relative grid has-disabled:opacity-50",
+				twlib.IIF(props.LabelResponsive, "mt-3", ""),
+			}
+		>
+			@emailInput(props)
+			<span
+				class={
+					"order-first",
+					twlib.IIF(
+						props.LabelResponsive,
+						"absolute top-1/2 -translate-y-1/2 left-8 text-neutral-950 dark:text-neutral-50/50 "+
+							"peer-has-focus:-top-2.5 peer-has-focus:translate-y-0 peer-has-focus:left-3 "+
+							"peer-has-focus:text-sm peer-has-focus:text-shadow peer-has-focus:font-semibold "+
+							"peer-has-focus:shadow-neutral-50 peer-has-focus:dark:shadow-neutral-950 "+
+							"peer-has-focus:dark:text-neutral-50 transition-all",
+						"",
+					),
+				}
+			>
+				{ props.Label }
+			</span>
+		</label>
+	} else {
+		@emailInput(props)
+	}
+}
+
+templ emailInput(props EmailInputProps) {
+	<span class="peer relative block">
+		@twicons.AtSign("absolute left-1 bottom-0 h-5 w-5 mb-2")
+		<input
+			type="email"
+			if props.ID != "" {
+				id={ props.ID }
+			}
+			class={
+				twmerge.Merge(
+					"bg-neutral-950/5 dark:bg-neutral-50/5 enabled:focus:bg-transparent border-neutral-950",
+					"dark:border-neutral-50 text-current h-9 w-full pl-7 pr-2 disabled:cursor-not-allowed",
+					"[&[aria-invalid]]:border-2 [&[aria-invalid=true]]:border-red-700",
+					"[&[aria-invalid=false]]:border-green-700",
+					twlib.IIF(props.Label == "", "disabled:opacity-50", ""),
+					twlib.IIF(
+						props.LabelResponsive,
+						"not-focus:placeholder:opacity-0",
+						"",
+					),
+					props.Class,
+				),
+			}
+			if props.Placeholder != "" {
+				placeholder={ props.Placeholder }
+			}
+			if props.Name != "" {
+				name={ props.Name }
+			}
+			if props.Value != "" {
+				value={ props.Value }
+			}
+			if props.Invalid || props.Valid {
+				aria-invalid={ twlib.IIF(props.Invalid, "true", "false") }
+			}
+			disabled?={ props.Disabled }
+			{ props.Attributes... }
+		/>
+	</span>
+	if props.Validator && props.ID != "" {
+		@emailInputValidator(props.ID)
+	}
+}
+
+templ emailInputValidator(id string) {
+	{{ nonce := templ.GetNonce(ctx) }}
+	<script
+		for={ id }
+		if nonce != "" {
+			nonce={ nonce }
+		}
+	>
+		function validateEmailInput() {
+			if (this.value.length > 0) {
+				const valid =/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(this.value);
+				this.setAttribute("aria-invalid", !valid);
+			} else {
+				this.removeAttribute("aria-invalid");
+			}
+		}
+		validateEmailInput.call(document.getElementById(document.currentScript.getAttribute("for")));
+		document.getElementById(document.currentScript.getAttribute("for"))
+			.addEventListener("blur", validateEmailInput);
+		document.getElementById(document.currentScript.getAttribute("for"))
+			.addEventListener("focus", function(e) {
+				this.removeAttribute("aria-invalid");
+		})
+	</script>
+}

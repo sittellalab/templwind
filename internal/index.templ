@@ -1,7 +1,6 @@
 package internal
 
 import "github.com/sittellalab/templwind/pkg/twui"
-import "time"
 
 templ Index() {
 	<!DOCTYPE html>
@@ -16,12 +15,14 @@ templ Index() {
 		<body class="bg-neutral-50 text-neutral-950 dark:bg-neutral-950 dark:text-neutral-50">
 			@twui.ThemeToggle(twui.ThemeToggleProps{})
 			<br/>
-			@twui.DatetimeInput(twui.DatetimeInputProps{ID: "d1", Validator: true, Min: time.Now(), Max: time.Now().Add(time.Hour * 200)})
-			@twui.DatetimeInput(twui.DatetimeInputProps{Disabled: true, Valid: true})
-			@twui.DatetimeInput(twui.DatetimeInputProps{ID: "d2", Validator: true, Label: "label", Max: time.Now().Add(time.Hour * 200)})
-			@twui.DatetimeInput(twui.DatetimeInputProps{Label: "label", Disabled: true, Invalid: true})
-			@twui.DatetimeInput(twui.DatetimeInputProps{ID: "d3", Validator: true, Label: "label", LabelResponsive: true, Min: time.Now()})
-			@twui.DatetimeInput(twui.DatetimeInputProps{Label: "label", LabelResponsive: true, Disabled: true})
+			@twui.EmailInput(twui.EmailInputProps{ID: "e1", Validator: true})
+			@twui.EmailInput(twui.EmailInputProps{Disabled: true, Valid: true})
+			@twui.EmailInput(twui.EmailInputProps{ID: "e2", Label: "label", Placeholder: "placeholder", Validator: true})
+			@twui.EmailInput(twui.EmailInputProps{Label: "label", Disabled: true, Invalid: true, Placeholder: "placeholder"})
+			@twui.EmailInput(twui.EmailInputProps{ID: "d3", Label: "label", LabelResponsive: true, Placeholder: "placeholder", Validator: true})
+			@twui.EmailInput(twui.EmailInputProps{Label: "label", LabelResponsive: true, Disabled: true, Placeholder: "placeholder"})
+			@twui.DateInput(twui.DateInputProps{Label: "label", LabelResponsive: true})
+			@twui.DatetimeInput(twui.DatetimeInputProps{Label: "label", LabelResponsive: true})
 		</body>
 	</html>
 }

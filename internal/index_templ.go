@@ -9,7 +9,6 @@ import "github.com/a-h/templ"
 import templruntime "github.com/a-h/templ/runtime"
 
 import "github.com/sittellalab/templwind/pkg/twui"
-import "time"
 
 func Index() templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
@@ -52,27 +51,35 @@ func Index() templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = twui.DatetimeInput(twui.DatetimeInputProps{ID: "d1", Validator: true, Min: time.Now(), Max: time.Now().Add(time.Hour * 200)}).Render(ctx, templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = twui.EmailInput(twui.EmailInputProps{ID: "e1", Validator: true}).Render(ctx, templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = twui.DatetimeInput(twui.DatetimeInputProps{Disabled: true, Valid: true}).Render(ctx, templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = twui.EmailInput(twui.EmailInputProps{Disabled: true, Valid: true}).Render(ctx, templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = twui.DatetimeInput(twui.DatetimeInputProps{ID: "d2", Validator: true, Label: "label", Max: time.Now().Add(time.Hour * 200)}).Render(ctx, templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = twui.EmailInput(twui.EmailInputProps{ID: "e2", Label: "label", Placeholder: "placeholder", Validator: true}).Render(ctx, templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = twui.DatetimeInput(twui.DatetimeInputProps{Label: "label", Disabled: true, Invalid: true}).Render(ctx, templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = twui.EmailInput(twui.EmailInputProps{Label: "label", Disabled: true, Invalid: true, Placeholder: "placeholder"}).Render(ctx, templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = twui.DatetimeInput(twui.DatetimeInputProps{ID: "d3", Validator: true, Label: "label", LabelResponsive: true, Min: time.Now()}).Render(ctx, templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = twui.EmailInput(twui.EmailInputProps{ID: "d3", Label: "label", LabelResponsive: true, Placeholder: "placeholder", Validator: true}).Render(ctx, templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = twui.DatetimeInput(twui.DatetimeInputProps{Label: "label", LabelResponsive: true, Disabled: true}).Render(ctx, templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = twui.EmailInput(twui.EmailInputProps{Label: "label", LabelResponsive: true, Disabled: true, Placeholder: "placeholder"}).Render(ctx, templ_7745c5c3_Buffer)
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = twui.DateInput(twui.DateInputProps{Label: "label", LabelResponsive: true}).Render(ctx, templ_7745c5c3_Buffer)
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = twui.DatetimeInput(twui.DatetimeInputProps{Label: "label", LabelResponsive: true}).Render(ctx, templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

@@ -84,7 +84,7 @@ func main() {
 - [X] [Color Input](/pkg/twui/color_input.templ)
 - [X] [Date Input](/pkg/twui/date_input.templ)
 - [X] [Datetime Input](/pkg/datetime_input.templ)
-- [ ] Email Input
+- [X] [Email Input](/pkg/email_input.templ)
 - [ ] File Input
 - [ ] Month Input
 - [ ] Number Input

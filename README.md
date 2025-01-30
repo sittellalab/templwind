@@ -80,7 +80,7 @@ func main() {
 
 ### Form Controls
 - [X] [Button](/pkg/twui/button.templ)
-- [ ] Checkbox
+- [X] [Checkbox](/pkg/twui/checkbox.templ)
 - [ ] Color Input
 - [ ] Date Input
 - [ ] Datetime Input

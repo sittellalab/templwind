@@ -1,0 +1,55 @@
+package twui
+
+import "github.com/Oudwins/tailwind-merge-go/pkg/twmerge"
+import "github.com/sittellalab/templwind/pkg/twlib"
+
+type CheckboxStyle string
+
+const (
+	ContrastCheckbox CheckboxStyle = "checked:bg-neutral-950 indeterminate:bg-neutral-950 dark:checked:bg-neutral-50" +
+		" dark:indeterminate:bg-neutral-50 text-neutral-50 dark:text-neutral-950"
+	GreenCheckbox  CheckboxStyle = "checked:bg-green-700 indeterminate:bg-green-700 text-neutral-50"
+	RedCheckbox    CheckboxStyle = "checked:bg-red-700 indeterminate:bg-red-700 text-neutral-50"
+	TealCheckbox   CheckboxStyle = "checked:bg-teal-700 indeterminate:bg-teal-700 text-neutral-50"
+	YellowCheckbox CheckboxStyle = "checked:bg-yellow-600 indeterminate:bg-yellow-600 text-neutral-950"
+)
+
+type CheckboxProps struct {
+	Checked          bool          // Adds the checked attribute.
+	Class            string        // Additional classes, conflicting tailwind classes are overwritten.
+	Disabled         bool          // Disables the checkbox.
+	Name             string        // Specifies the checkbox name attribute.
+	ID               string        // Specifies the checkbox id attribute.
+	Style            CheckboxStyle // Applies pre-prepared styling.
+	Value            string        // Specifies the checkbox value attribute.
+	templ.Attributes               // Additional attributes.
+}
+
+// Checkbox renders a clickable checkbox form control.
+templ Checkbox(props CheckboxProps) {
+	<input
+		type="checkbox"
+		if props.ID != "" {
+			id={ props.ID }
+		}
+		class={
+			twmerge.Merge(
+				"relative appearance-none border border-neutral-950 dark:border-neutral-50 rounded text-lg",
+				"font-semibold leading-none enabled:cursor-pointer disabled:cursor-not-allowed h-5 w-5",
+				"after:absolute after:top-1/2 after:-translate-y-1/2 after:left-1/2 after:-translate-x-1/2",
+				"checked:after:content-['✓'] indeterminate:after:content-['–'] disabled:opacity-50",
+				string(twlib.Coalesce(props.Style, ContrastCheckbox)),
+				props.Class,
+			),
+		}
+		if props.Name != "" {
+			name={ props.Name }
+		}
+		if props.Value != "" {
+			value={ props.Name }
+		}
+		checked?={ props.Checked }
+		disabled?={ props.Disabled }
+		{ props.Attributes... }
+	/>
+}

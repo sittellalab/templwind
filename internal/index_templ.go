@@ -52,27 +52,27 @@ func Index() templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = twui.DateInput(twui.DateInputProps{ID: "d1", Validator: true, Min: time.Now(), Max: time.Now().Add(time.Hour * 200)}).Render(ctx, templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = twui.DatetimeInput(twui.DatetimeInputProps{ID: "d1", Validator: true, Min: time.Now(), Max: time.Now().Add(time.Hour * 200)}).Render(ctx, templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = twui.DateInput(twui.DateInputProps{Disabled: true, Valid: true}).Render(ctx, templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = twui.DatetimeInput(twui.DatetimeInputProps{Disabled: true, Valid: true}).Render(ctx, templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = twui.DateInput(twui.DateInputProps{ID: "d2", Validator: true, Label: "label", Max: time.Now().Add(time.Hour * 200)}).Render(ctx, templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = twui.DatetimeInput(twui.DatetimeInputProps{ID: "d2", Validator: true, Label: "label", Max: time.Now().Add(time.Hour * 200)}).Render(ctx, templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = twui.DateInput(twui.DateInputProps{Label: "label", Disabled: true, Invalid: true}).Render(ctx, templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = twui.DatetimeInput(twui.DatetimeInputProps{Label: "label", Disabled: true, Invalid: true}).Render(ctx, templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = twui.DateInput(twui.DateInputProps{ID: "d3", Validator: true, Label: "label", LabelResponsive: true, Min: time.Now()}).Render(ctx, templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = twui.DatetimeInput(twui.DatetimeInputProps{ID: "d3", Validator: true, Label: "label", LabelResponsive: true, Min: time.Now()}).Render(ctx, templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = twui.DateInput(twui.DateInputProps{Label: "label", LabelResponsive: true, Disabled: true}).Render(ctx, templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = twui.DatetimeInput(twui.DatetimeInputProps{Label: "label", LabelResponsive: true, Disabled: true}).Render(ctx, templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

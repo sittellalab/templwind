@@ -1,0 +1,122 @@
+package twui
+
+import "time"
+import "github.com/Oudwins/tailwind-merge-go/pkg/twmerge"
+import "github.com/sittellalab/templwind/pkg/twlib"
+
+const htmlDateTimeFormat = "2006-01-02T15:04"
+
+type DatetimeInputProps struct {
+	Class            string    // Additional classes for the <input>, conflicting tailwind classes are overwritten.
+	Disabled         bool      // Disables the datetime input.
+	Label            string    // Wraps the datetime input in a label.
+	LabelResponsive  bool      // Applies responsive styling to the label.
+	Max              time.Time // Specifies the datetime input max attribute.
+	Min              time.Time // Specifies the datetime input min attribute.
+	Name             string    // Specifies the datetime input name attribute.
+	ID               string    // Specifies the datetime input id attribute.
+	Invalid          bool      // Sets the aria-invalid attribute to true and applies invalid styling.
+	Valid            bool      // Sets the aria-invalid attribute to false and applies valid styling.
+	Validator        bool      // Adds a validator function to validatetime the min and max of the datetime input.
+	Value            time.Time // Specifies the datetime input value attribute.
+	templ.Attributes           // Additional attributes.
+}
+
+// datetimeInput renders a datetime input form control.
+// NOTE: If using the Validator, JavaScript will be required.
+// In addition, the Validator requires an element ID, and a Min and/or Max value.
+templ DatetimeInput(props DatetimeInputProps) {
+	if props.Label != "" {
+		<label
+			class={
+				"relative grid has-disabled:opacity-50",
+				twlib.IIF(props.LabelResponsive, "mt-3", ""),
+			}
+		>
+			@datetimeInput(props)
+			<span
+				class={
+					"order-first",
+					twlib.IIF(
+						props.LabelResponsive,
+						"absolute -top-2.5 left-3 text-sm text-shadow shadow-neutral-50 dark:shadow-neutral-950",
+						"",
+					),
+				}
+			>{ props.Label }</span>
+		</label>
+	} else {
+		@datetimeInput(props)
+	}
+}
+
+templ datetimeInput(props DatetimeInputProps) {
+	<input
+		type="datetime-local"
+		if props.ID != "" {
+			id={ props.ID }
+		}
+		class={
+			twmerge.Merge(
+				"peer bg-neutral-950/5 dark:bg-neutral-50/5 enabled:focus:bg-transparent border-neutral-950",
+				"dark:border-neutral-50 text-current h-9 w-full px-2 disabled:cursor-not-allowed",
+				"[&[aria-invalid]]:border-2 [&[aria-invalid=true]]:border-red-700",
+				"[&[aria-invalid=false]]:border-green-700",
+				twlib.IIF(props.Label == "", "disabled:opacity-50", ""),
+				props.Class,
+			),
+		}
+		if props.Name != "" {
+			name={ props.Name }
+		}
+		if !props.Value.IsZero() {
+			value={ props.Value.Format(htmlDateTimeFormat) }
+		}
+		if !props.Min.IsZero() {
+			min={ props.Min.Format(htmlDateTimeFormat) }
+		}
+		if !props.Max.IsZero() {
+			max={ props.Max.Format(htmlDateTimeFormat) }
+		}
+		if props.Invalid || props.Valid {
+			aria-invalid={ twlib.IIF(props.Invalid, "true", "false") }
+		}
+		disabled?={ props.Disabled }
+		{ props.Attributes... }
+	/>
+	if props.Validator && props.ID != "" && (!props.Min.IsZero() || !props.Max.IsZero()) {
+		@datetimeInputValidator(props.ID)
+	}
+}
+
+templ datetimeInputValidator(id string) {
+	{{ nonce := templ.GetNonce(ctx) }}
+	<script for={ id } if nonce != "" {
+	nonce={ nonce }
+}>
+		function validateDatetimeInput() {
+			if (this.value.length > 0) {
+				let valid;
+				if (this.min && !this.max) {
+					valid = this.value >= this.min;
+				}
+				else if (this.min && this.max) {
+					valid = this.value >= this.min && this.value <= this.max;
+				}
+				else {
+					valid = this.value <= this.max;
+				}
+				this.setAttribute("aria-invalid", !valid);
+			} else {
+				this.removeAttribute("aria-invalid");
+			}
+		}
+		validateDatetimeInput.call(document.getElementById(document.currentScript.getAttribute("for")));
+		document.getElementById(document.currentScript.getAttribute("for"))
+			.addEventListener("blur", validateDatetimeInput);
+		document.getElementById(document.currentScript.getAttribute("for"))
+			.addEventListener("focus", function(e) {
+				this.removeAttribute("aria-invalid");
+		})
+	</script>
+}

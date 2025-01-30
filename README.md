@@ -83,7 +83,7 @@ func main() {
 - [X] [Checkbox](/pkg/twui/checkbox.templ)
 - [X] [Color Input](/pkg/twui/color_input.templ)
 - [X] [Date Input](/pkg/twui/date_input.templ)
-- [ ] Datetime Input
+- [X] [Datetime Input](/pkg/datetime_input.templ)
 - [ ] Email Input
 - [ ] File Input
 - [ ] Month Input

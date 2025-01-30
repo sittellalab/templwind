@@ -79,7 +79,7 @@ func main() {
 - [X] [Spinner](/pkg/twui/spinner.templ)
 
 ### Form Controls
-- [ ] Button
+- [X] [Button](/pkg/twui/button.templ)
 - [ ] Checkbox
 - [ ] Color Input
 - [ ] Date Input

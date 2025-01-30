@@ -1,0 +1,59 @@
+package twui
+
+import "github.com/sittellalab/templwind/pkg/twlib"
+import "github.com/Oudwins/tailwind-merge-go/pkg/twmerge"
+
+type ButtonStyle string
+
+const (
+	ContrastButton ButtonStyle = "bg-neutral-950 dark:bg-neutral-50 border-neutral-950 dark:border-neutral-50" +
+		" text-neutral-50 dark:text-neutral-950 enabled:hover:bg-neutral-950/90 enabled:dark:hover:bg-neutral-50/90" +
+		" enabled:active:bg-neutral-950/80 enabled:dark:active:bg-neutral-50/80"
+	GreenButton ButtonStyle = "bg-green-700 border-green-700 text-neutral-50 enabled:hover:bg-green-700/90" +
+		" enabled:active:bg-green-700/80"
+	RedButton ButtonStyle = "bg-red-700 border-red-700 text-neutral-50 enabled:hover:bg-red-700/90" +
+		" enabled:active:bg-red-700/80"
+	YellowButton ButtonStyle = "bg-yellow-600 border-yellow-600 text-neutral-950 enabled:hover:bg-yellow-600/90" +
+		" enabled:active:bg-yellow-600/80"
+	TealButton ButtonStyle = "bg-teal-700 border-teal-700 text-neutral-50 enabled:hover:bg-teal-700/90" +
+		" enabled:active:bg-teal-700/80"
+)
+
+type ButtonProps struct {
+	Class            string      // Additional classes, conflicting tailwind classes are overwritten.
+	Disabled         bool        // Disables the button.
+	ID               string      // Specifies the button id attribute.
+	Outline          bool        // Applies outline styling.
+	Style            ButtonStyle // Applies pre-prepared styling.
+	Type             string      // Specifies the button type, defaults to button.
+	templ.Attributes             // Additional attributes
+}
+
+// Button renders a clickable button form control component.
+templ Button(props ButtonProps) {
+	<button
+		type={ twlib.Coalesce(props.Type, "button") }
+		if props.ID != "" {
+			id={ props.ID }
+		}
+		class={
+			twmerge.Merge(
+				"inline-flex gap-1 justify-center items-center align-middle h-9 px-2 enabled:cursor-pointer",
+				"enabled:hover:border-transparent enabled:active:border-transparent disabled:cursor-not-allowed",
+				"disabled:opacity-50 transition-colors",
+				string(twlib.Coalesce(props.Style, ContrastButton)),
+				twlib.IIF(
+					props.Outline,
+					"not-hover:bg-transparent disabled:bg-transparent not-hover:text-current disabled:text-current",
+					"",
+				),
+		
+				props.Class,
+			),
+		}
+		disabled?={ props.Disabled }
+		{ props.Attributes... }
+	>
+		{ children... }
+	</button>
+}

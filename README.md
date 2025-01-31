@@ -13,7 +13,7 @@ Convenient and accessible Templ components for Go developers.
 
 ### Installation
 
-`go get github.com/dimmerz92/templwind`
+`go get github.com/sittellalab/templwind`
 
 ### Example
 
@@ -21,7 +21,7 @@ Convenient and accessible Templ components for Go developers.
 ```templ
 package components
 
-import "github.com/dimmerz92/templwind/twui"
+import "github.com/sittellalab/templwind/twui"
 
 templ MyComponent() {
   // ... surrounding content
@@ -37,8 +37,8 @@ package main
 import (
   "net/http"
 
-  "github.com/dimmerz92/templwind/twlib"
-  "github.com/dimmerz92/templwind/twui"
+  "github.com/sittellalab/templwind/twlib"
+  "github.com/sittellalab/templwind/twui"
 )
 
 func main() {
@@ -85,7 +85,7 @@ func main() {
 - [X] [Date Input](/pkg/twui/date_input.templ)
 - [X] [Datetime Input](/pkg/datetime_input.templ)
 - [X] [Email Input](/pkg/email_input.templ)
-- [ ] File Input
+- [X] [File Input](/pkg/file_input.templ)
 - [ ] Month Input
 - [ ] Number Input
 - [ ] OTP Input

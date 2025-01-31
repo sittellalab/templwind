@@ -1,0 +1,88 @@
+package twui
+
+import "github.com/sittellalab/templwind/pkg/twlib"
+import "github.com/Oudwins/tailwind-merge-go/pkg/twmerge"
+
+type FileInputProps struct {
+	Accept           string // Specifies the filetypes to allow for upload. NOTE: this does not validate, validate files on the server.
+	Class            string // Additional classes for the <input>, conflicting tailwind classes are overwritten.
+	DirectoryUpload  bool   // Specifies the file input to upload directories instead of files.
+	Disabled         bool   // Disables the file input.
+	Label            string // Wraps the file input in a label.
+	LabelResponsive  bool   // Applies responsive styling to the label.
+	ID               string // Specifies the file input id attribute.
+	Multiple         bool   // Allows the user to upload more than one file.
+	Name             string // Specifies the file input name attribute.
+	Invalid          bool   // Sets the aria-invalid attribute to true and applies invalid styling.
+	Valid            bool   // Sets the aria-invalid attribute to false and applies valid styling.
+	templ.Attributes        // Additional attributes.
+}
+
+// FileInput renders a file input form control.
+// NOTE: If using DirectoryUpload, use the `GetStructuredFilename` function in twlib to retain the directory structure
+// of each file on the server side.
+templ FileInput(props FileInputProps) {
+	if props.Label != "" {
+		<label
+			class={
+				"relative grid has-disabled:opacity-50",
+				twlib.IIF(props.LabelResponsive, "mt-3", ""),
+			}
+		>
+			@fileInput(props)
+			<span
+				class={
+					"order-first",
+					twlib.IIF(
+						props.LabelResponsive,
+						"absolute -top-2.5 left-3 text-sm font-semibold text-shadow shadow-neutral-50 "+
+							"dark:shadow-neutral-950",
+						"",
+					),
+				}
+			>
+				{ props.Label }
+			</span>
+		</label>
+	} else {
+		@fileInput(props)
+	}
+}
+
+templ fileInput(props FileInputProps) {
+	<input
+		type="file"
+		if props.ID != "" {
+			id={ props.ID }
+		}
+		class={
+			twmerge.Merge(
+				"peer bg-neutral-950/5 dark:bg-neutral-50/5 enabled:focus:bg-transparent border border-neutral-950",
+				"dark:border-neutral-50 rounded text-current text-sm h-9 w-full px-2 disabled:cursor-not-allowed",
+				"file:bg-neutral-950 dark:file:bg-neutral-50 enabled:hover:file:bg-neutral-950/90",
+				"dark:enabled:hover:file:bg-neutral-50/90 enabled:active:file:bg-neutral-950/80",
+				"dark:enabled:active:file:bg-neutral-50/80 file:text-neutral-50 dark:file:text-neutral-950",
+				"file:rounded enabled:file:cursor-pointer file:h-5 file:my-1.75 file:px-1",
+				"[&[aria-invalid]]:border-2 [&[aria-invalid=true]]:border-red-700",
+				"[&[aria-invalid=false]]:border-green-700",
+				twlib.IIF(props.Label == "", "disabled:opacity-50", ""),
+				props.Class,
+			),
+		}
+		if props.Name != "" {
+			name={ props.Name }
+		}
+		if props.Accept != "" {
+			accept={ props.Accept }
+		}
+		if props.Invalid || props.Valid {
+			aria-invalid={ twlib.IIF(props.Invalid, "true", "false") }
+		}
+		multiple?={ props.Multiple || props.DirectoryUpload }
+		directory?={ props.DirectoryUpload }
+		mozdirectory?={ props.DirectoryUpload }
+		webkitdirectory?={ props.DirectoryUpload }
+		disabled?={ props.Disabled }
+		{ props.Attributes... }
+	/>
+}

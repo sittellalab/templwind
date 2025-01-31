@@ -15,14 +15,27 @@ templ Index() {
 		<body class="bg-neutral-50 text-neutral-950 dark:bg-neutral-950 dark:text-neutral-50">
 			@twui.ThemeToggle(twui.ThemeToggleProps{})
 			<br/>
-			@twui.EmailInput(twui.EmailInputProps{ID: "e1", Validator: true})
-			@twui.EmailInput(twui.EmailInputProps{Disabled: true, Valid: true})
-			@twui.EmailInput(twui.EmailInputProps{ID: "e2", Label: "label", Placeholder: "placeholder", Validator: true})
-			@twui.EmailInput(twui.EmailInputProps{Label: "label", Disabled: true, Invalid: true, Placeholder: "placeholder"})
-			@twui.EmailInput(twui.EmailInputProps{ID: "d3", Label: "label", LabelResponsive: true, Placeholder: "placeholder", Validator: true})
-			@twui.EmailInput(twui.EmailInputProps{Label: "label", LabelResponsive: true, Disabled: true, Placeholder: "placeholder"})
-			@twui.DateInput(twui.DateInputProps{Label: "label", LabelResponsive: true})
-			@twui.DatetimeInput(twui.DatetimeInputProps{Label: "label", LabelResponsive: true})
+			<form method="post" action="/folder" enctype="multipart/form-data">
+				@twui.FileInput(twui.FileInputProps{ID: "e1", DirectoryUpload: true, Name: "folders"})
+				@twui.Button(twui.ButtonProps{Type: "submit"}) {
+					submit
+				}
+			</form>
+			@twui.FileInput(twui.FileInputProps{ID: "e2", Disabled: true})
+			<form method="post" action="/files" enctype="multipart/form-data">
+				@twui.FileInput(twui.FileInputProps{ID: "e3", Label: "label", Multiple: true, Name: "files"})
+				@twui.Button(twui.ButtonProps{Type: "submit"}) {
+					submit
+				}
+			</form>
+			@twui.FileInput(twui.FileInputProps{ID: "e4", Label: "label", Disabled: true})
+			<form method="post" action="/file" enctype="multipart/form-data">
+				@twui.FileInput(twui.FileInputProps{ID: "e5", Label: "label", LabelResponsive: true, Name: "file", Invalid: true})
+				@twui.Button(twui.ButtonProps{Type: "submit"}) {
+					submit
+				}
+			</form>
+			@twui.FileInput(twui.FileInputProps{ID: "e6", Label: "label", LabelResponsive: true, Disabled: true, Valid: true})
 		</body>
 	</html>
 }

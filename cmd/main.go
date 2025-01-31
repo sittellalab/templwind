@@ -53,12 +53,38 @@ func runDevServer(args []string) {
 		log.Fatal("PORT ERROR: Use a port between 1024 and 65535")
 	}
 
-	http.HandleFunc("/output.css", func(w http.ResponseWriter, r *http.Request) {
+	// Styles
+	http.HandleFunc("GET /output.css", func(w http.ResponseWriter, r *http.Request) {
 		http.ServeFile(w, r, "pkg/twthemes/output.css")
 	})
 
-	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+	// Index page
+	http.HandleFunc("GET /", func(w http.ResponseWriter, r *http.Request) {
 		twlib.Render(w, r, http.StatusOK, internal.Index())
+	})
+
+	// Test route for uploading a directory (prints file names with dir structure)
+	http.HandleFunc("POST /folder", func(w http.ResponseWriter, r *http.Request) {
+		r.ParseMultipartForm(200 << 20)
+		files, _ := r.MultipartForm.File["folders"]
+		for _, file := range files {
+			fmt.Println(twlib.GetStructuredFilename(file))
+		}
+	})
+
+	// Test route for uploading many files
+	http.HandleFunc("POST /files", func(w http.ResponseWriter, r *http.Request) {
+		r.ParseMultipartForm(200 << 20)
+		files, _ := r.MultipartForm.File["files"]
+		for _, file := range files {
+			fmt.Println(file.Filename)
+		}
+	})
+
+	// Test route for a single file
+	http.HandleFunc("POST /file", func(w http.ResponseWriter, r *http.Request) {
+		r.ParseMultipartForm(200 << 20)
+		fmt.Println(r.MultipartForm.File["file"][0].Filename)
 	})
 
 	fmt.Printf("Starting dev server on port %d", *port)

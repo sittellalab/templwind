@@ -61,7 +61,7 @@ func Button(props ButtonProps) templ.Component {
 		ctx = templ.ClearChildren(ctx)
 		var templ_7745c5c3_Var2 = []any{
 			twmerge.Merge(
-				"inline-flex gap-1 justify-center items-center align-middle h-9 px-2 enabled:cursor-pointer",
+				"inline-flex gap-1 justify-center items-center rounded align-middle h-9 px-2 enabled:cursor-pointer",
 				"enabled:hover:border-transparent enabled:active:border-transparent disabled:cursor-not-allowed",
 				"disabled:opacity-50 transition-colors",
 				string(twlib.Coalesce(props.Style, ContrastButton)),
